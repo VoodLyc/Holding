@@ -1,19 +1,23 @@
 package model;
 
 /**
-*<b>Description:</b> The class SubordinateCompany in the package model.<br>
+*<b>Description:</b> The class TechCompany in the package model.<br>
 *@author Johan Giraldo.
 */
 
-public abstract class SubordinateCompany extends Company{
+public class TechCompany extends SubordinateCompany{
+
+//Constants
+
+	public static final String[] SERVICES = {"Consultancy", "Training", "Custom development", "Infrastructure as a service", "Software as a service", "Platform as a service"};
 
 //Attributes
 
-	private String type;
+	private int[] services;
 
 //Constructor
 /**
-*<b>Description:</b> The constructor of the class SubordinateCompany.<br>
+*<b>Description:</b> The constructor of the class TechCompany.<br>
 *<b>Post:</b> All attributes of the class are initialized.<br>
 *@param name The name of the company.
 *@param nit The number that identifies the company.
@@ -27,9 +31,13 @@ public abstract class SubordinateCompany extends Company{
 *@param floors The number of floors of the company's building.
 *@param numberOfCubicles The number of cubicles per floor.
 */
-	public SubordinateCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles){
 
-		super(name, nit, address, phone, assets, dateOfConstitution, amountOfEmployees, legalRepresentative, floors, numberOfCubicles);
-		this.type = type;
+	public TechCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles, int [] services){
+
+		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, numberOfCubicles);
+		for(int i = 0; i < this.services.length; i++){
+
+			services[i] = this.services[i];
+		}
 	}
 }

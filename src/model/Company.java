@@ -1,15 +1,15 @@
 package model;
 
 /**
-*Description: The class Company in the package model.</br>
+*<b>Description:</b> The class Company in the package model.<br>
 *@author Johan Giraldo.
 */
 
 public abstract class Company{
 
-//Constats
+//Constants
 
-	public static final String [] TYPES = {"Agriculture, hunting, silviculture and fishing", "Exploitation of mines and quarries", "Manufacturing industry", "Electricity, gas and steam", "Building", "Wholesale and retail", "Transportation, storage and communications", "Est.F / Cieros, insurance, B.estate, Serv. to companies", "Communal, Social"} 
+	public static final String[] TYPES = {"Agriculture, hunting, silviculture and fishing", "Exploitation of mines and quarries", "Manufacturing industry", "Electricity, gas and steam", "Building", "Wholesale and retail", "Transportation, storage and communications", "Est.F / Cieros, insurance, B.estate, Serv. to companies", "Communal, Social"}; 
 
 //Attributes
 
@@ -23,12 +23,12 @@ public abstract class Company{
 	private String legalRepresentative;
 	private int floors;
 	private int numberOfCubicles;
-	private Cubicle [][] cubicles;
+	private Cubicle[][] cubicles;
 
 //Constructor
 /**
-*Description: The constructor of the class Company.</br>
-*Post: All attributes of the class are initialized.</br>
+*<b>Description:</b> The constructor of the class Company.<br>
+*<b>Post:</b> All attributes of the class are initialized.<br>
 *@param name The name of the company.
 *@param nit The number that identifies the company.
 *@param address The company's correspondence address.
@@ -49,11 +49,10 @@ public abstract class Company{
 		this.phone = phone;
 		this.assets = assets;
 		this.dateOfConstitution = dateOfConstitution;
-		this.type = type;
 		this.amountOfEmployees = amountOfEmployees;
 		this.legalRepresentative = legalRepresentative;
 		this.floors = floors;
 		this.numberOfCubicles = numberOfCubicles;
-		cubicles = new Cubicle [floors][cubicles];
+		cubicles = new Cubicle [floors][numberOfCubicles];
 	}
 }
