@@ -31,15 +31,14 @@ public class PublicServicesCompany extends ServicesCompany{
 *@param amountOfEmployees The number of the company's employees.
 *@param legalRepresentative The name of the company's representative legal.
 *@param floors The number of floors of the company's building.
-*@param numberOfCubicles The number of cubicles per floor.
 *@param service The type of service provided by the company.
 *@param amountOfSubscribers The current number of total subscribers.
 *@param subscribersOfStratum1And2 The number of subscribers in stratum 1 and 2.
 */
 
-	public PublicServicesCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles, String service, int amountOfSubscribers, int subscribersOfStratum1And2){
+	public PublicServicesCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, String service, int amountOfSubscribers, int subscribersOfStratum1And2){
 
-		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, numberOfCubicles);
+		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors);
 		this.service = service;
 		this.amountOfSubscribers = amountOfSubscribers;
 		this.subscribersOfStratum1And2 = subscribersOfStratum1And2;

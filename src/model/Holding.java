@@ -25,12 +25,11 @@ public class Holding extends Company{
 *@param amountOfEmployees The number of the company's employees.
 *@param legalRepresentative The name of the company's representative legal.
 *@param floors The number of floors of the company's building.
-*@param numberOfCubicles The number of cubicles per floor.
 */
 
-	public Holding(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles){
+	public Holding(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, int amountOfEmployees, String legalRepresentative, int floors	){
 
-		super(name, nit, address, phone, assets, dateOfConstitution, amountOfEmployees, legalRepresentative, floors, numberOfCubicles);
+		super(name, nit, address, phone, assets, dateOfConstitution, amountOfEmployees, legalRepresentative, floors);
 		companies = new ArrayList<Company>();
 	}
 }

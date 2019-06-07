@@ -9,7 +9,8 @@ public abstract class Company{
 
 //Constants
 
-	public static final String[] TYPES = {"Agriculture, hunting, silviculture and fishing", "Exploitation of mines and quarries", "Manufacturing industry", "Electricity, gas and steam", "Building", "Wholesale and retail", "Transportation, storage and communications", "Est.F / Cieros, insurance, B.estate, Serv. to companies", "Communal, Social"}; 
+	public static final String[] TYPES = {"Agriculture, hunting, silviculture and fishing", "Exploitation of mines and quarries", "Manufacturing industry", "Electricity, gas and steam", "Building", "Wholesale and retail", "Transportation, storage and communications", "Est.F / Cieros, insurance, B.estate, Serv. to companies", "Communal, Social"};
+	public static final int CUBICLES = 20; 
 
 //Attributes
 
@@ -22,7 +23,6 @@ public abstract class Company{
 	private int amountOfEmployees;
 	private String legalRepresentative;
 	private int floors;
-	private int numberOfCubicles;
 	private Cubicle[][] cubicles;
 
 //Constructor
@@ -38,10 +38,9 @@ public abstract class Company{
 *@param amountOfEmployees The number of the company's employees.
 *@param legalRepresentative The name of the company's representative legal.
 *@param floors The number of floors of the company's building.
-*@param numberOfCubicles The number of cubicles per floor.
 */
 
-	public Company(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles){
+	public Company(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, int amountOfEmployees, String legalRepresentative, int floors){
 
 		this.name = name;
 		this.nit = nit;
@@ -52,7 +51,6 @@ public abstract class Company{
 		this.amountOfEmployees = amountOfEmployees;
 		this.legalRepresentative = legalRepresentative;
 		this.floors = floors;
-		this.numberOfCubicles = numberOfCubicles;
-		cubicles = new Cubicle [floors][numberOfCubicles];
+		cubicles = new Cubicle [floors][CUBICLES];
 	}
 }

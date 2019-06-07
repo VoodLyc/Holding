@@ -6,7 +6,7 @@ import java.util.ArrayList;
 *@author Johan Giraldo.
 */
 
-public class ManufacturingCompany extends SubordinateCompany{
+public abstract class ManufacturingCompany extends SubordinateCompany{
 
 //Attributes
 
@@ -29,9 +29,9 @@ public class ManufacturingCompany extends SubordinateCompany{
 *@param numberOfCubicles The number of cubicles per floor.
 */
 	
-	public ManufacturingCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles){
+	public ManufacturingCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors){
 
-		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, numberOfCubicles);
+		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors);
 		products = new ArrayList<Product>();
 	}
 }

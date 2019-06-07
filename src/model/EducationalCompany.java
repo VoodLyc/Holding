@@ -11,9 +11,9 @@ public class EducationalCompany extends ServicesCompany{
 
 	private String id;
 	private int accreditedYears;
-	private int nationalPositioningTest11;
-	private int nationalPositioningTestPro;
+	private int nationalPositioningTest11Pro;
 	private String rectorName;
+	private int educationalSector;
 	private int studentsOfLowStratus;
 	private int amountOfStudents;
 
@@ -31,24 +31,23 @@ public class EducationalCompany extends ServicesCompany{
 *@param amountOfEmployees The number of the company's employees.
 *@param legalRepresentative The name of the company's representative legal.
 *@param floors The number of floors of the company's building.
-*@param numberOfCubicles The number of cubicles per floor.
 *@param id The registration number of approval before the Ministry of National Education.
 *@param accreditedYears The number of years accredited as a high-quality entity.
-*@param nationalPositioningTest11 National position according to exams saber11.
-*@param nationalPositioningTestPro National position according to exams saberPro.
+*@param nationalPositioningTest11Pro National position according to exams saber11/Pro.
 *@param rectorName The name of the rector.
+*@param educationalSector A number that indicates the education sector (0 if it is high school and 1 if it is a university).
 *@param studentsOfLowStratus The number of active students stratum 1 and 2.
 *@param amountOfStudents The total number of active students.
 */
 
-	public EducationalCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, int numberOfCubicles, String id, int accreditedYears, int nationalPositioningTest11, int nationalPositioningTestPro, int studentsOfLowStratus, int amountOfStudents){
+	public EducationalCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, String id, int accreditedYears, int nationalPositioningTest11Pro, String rectorName, int educationalSector, int studentsOfLowStratus, int amountOfStudents){
 
-		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, numberOfCubicles);
+		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors);
 		this.id = id;
 		this.accreditedYears = accreditedYears;
-		this.nationalPositioningTest11 = nationalPositioningTest11;
-		this.nationalPositioningTestPro = nationalPositioningTestPro;
+		this.nationalPositioningTest11Pro = nationalPositioningTest11Pro;
 		this.rectorName = rectorName;
+		this.educationalSector = educationalSector;
 		this.studentsOfLowStratus = studentsOfLowStratus;
 		this.amountOfStudents = amountOfStudents;
 	}
