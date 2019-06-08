@@ -32,4 +32,25 @@ public class Survey{
 		answers[2] = answer3;
 	}
 
+//Methods 
+
+	/**
+	*<b>Description:</b> This method allows calculate the average of the survey.<br>
+	*@return A double that is the average of the survey.
+	*/
+
+	public double calculateLevelOfSatisfaction(){
+
+		double satisfaction = 0;
+
+		for(int i = 0; i < answers.length; i++){
+
+			satisfaction += answers[i];
+		}
+
+		satisfaction /= answers.length;
+
+		return satisfaction;	
+	}
+
 }

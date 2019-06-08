@@ -21,7 +21,7 @@ public class TechnologyCompany extends SubordinateCompany{
 *<b>Description:</b> The constructor of the class TechnologyCompany.<br>
 *<b>Post:</b> All attributes of the class are initialized.<br>
 *@param name The name of the company.
-*@param nit The number that identifies the company.
+*@param nit A String that identifies the company.
 *@param address The company's correspondence address.
 *@param phone The contact phone number of the company.
 *@param assets the value of the company's assets in pesos.
@@ -29,7 +29,7 @@ public class TechnologyCompany extends SubordinateCompany{
 *@param type The type of organization (The types of organizations that exist are specified in the constant TYPE).
 *@param amountOfEmployees The number of the company's employees.
 *@param legalRepresentative The name of the company's representative legal.
-*@param floors The number of floors of the company's building.
+*@param floors The number of floors of the company's building (it must be between 3 and 7).
 *@param energyConsumed The energy consumed by the company in kilowatts.
 *@param service1 A number that indicates if the company has that service (0 if the company does not have that service and 1 if the company have that service).
 *@param service2 A number that indicates if the company has that service (0 if the company does not have that service and 1 if the company have that service).
@@ -39,7 +39,7 @@ public class TechnologyCompany extends SubordinateCompany{
 *@param service6 A number that indicates if the company has that service (0 if the company does not have that service and 1 if the company have that service).
 */
 
-	public TechnologyCompany(String name, int nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, double energyConsumed, int service1, int service2, int service3, int service4, int service5, int service6){
+	public TechnologyCompany(String name, String nit, String address, String phone, int assets, Date dateOfConstitution, String type, int amountOfEmployees, String legalRepresentative, int floors, double energyConsumed, int service1, int service2, int service3, int service4, int service5, int service6){
 
 		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors);
 		this.energyConsumed = energyConsumed;

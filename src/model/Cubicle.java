@@ -24,4 +24,37 @@ public class Cubicle{
 		this.extension = extension;
 		employee = null;		
 	}
+
+//Gets
+
+	/**
+	*<b>Description: </b> This method returns the employee.<br>
+	*@return The employee.
+	*/
+
+	public Employee getEmployee(){
+
+		return employee;
+	}
+
+//Methods
+
+	/**
+	*<b>Description:</b> This method allows instantiating an employee.<br>
+	*<b>Post:</b> The employee was instantiated.<br>
+	*<b>Pre:</b> No one parameter can be null.<br>
+	*@param name The name of the employee.
+	*@param job The job of the employee.
+	*@param email The email of the employee.
+	*@return A message that indicates to the user that the employee was added successfully.
+	*/
+
+	public String addEmployee(String name, String job, String email){
+
+		String msg = "The employee was added successfully";
+
+		employee = new Employee(name, job, email);
+
+		return msg;
+	}
 }
