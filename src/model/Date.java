@@ -14,13 +14,14 @@ public class Date{
 	private int year;
 
 //Constructor
-/**
-*<b>Description:</b> The constructor of the class Employee.<br>
-*<b>Post:</b> All attributes of the class are initialized.<br>
-*@param day A number that represents the day.
-*@param month A number that represents the month.
-*@param year A number that represents the year.
-*/
+	/**
+	*<b>Description:</b> The constructor of the class Employee.<br>
+	*<b>Pre:</b> No one parameter can be null.<br>
+	*<b>Post:</b> All attributes of the class are initialized.<br>
+	*@param day A number that represents the day.
+	*@param month A number that represents the month.
+	*@param year A number that represents the year.
+	*/
 
 	public Date(int day, int month, int year){
 
@@ -101,8 +102,12 @@ public class Date{
 	*@param year A number that represents the year.
 	*/
 
-	public void showDate(int day, int month, int year){
+	public String dateFormat(int day, int month, int year){
 
-		System.out.print(day + "/" + month + "/" + year);
+		String date = "";
+
+		date = day + "/" + month + "/" + year;
+
+		return date;
 	}
 }

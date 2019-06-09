@@ -13,11 +13,12 @@ public class Cubicle{
 	private Employee employee;
 
 //Constructor
-/**
-*<b>Description:</b> The constructor of the class Cubicle.<br>
-*<b>Post:</b> All attributes of the class are initialized.<br>
-*@param extension A String that identifies the cubicle.
-*/
+	/**
+	*<b>Description:</b> The constructor of the class Cubicle.<br>
+	*<b>Pre:</b> The extension cannot be null.<br>
+	*<b>Post:</b> All attributes of the class are initialized.<br>
+	*@param extension A String that identifies the cubicle.
+	*/
 
 	public Cubicle(String extension){
 

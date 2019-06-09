@@ -8,8 +8,8 @@ package model;
 public abstract class Company{
 
 //Constants
-
-	public static final String[] TYPES = {"Agriculture, hunting, silviculture and fishing", "Exploitation of mines and quarries", "Manufacturing industry", "Electricity, gas and steam", "Building", "Wholesale and retail", "Transportation, storage and communications", "Est.F / Cieros, insurance, B.estate, Serv. to companies", "Communal, Social"};
+	
+	public static final String[] CLASSES_OF_COMPANIES = {"Manufacturing company", "Food company", "Pharmaceutical company", "Technology company", "Educational company", "Public services company"};
 	public static final int CUBICLES = 20; 
 
 //Attributes
@@ -18,29 +18,30 @@ public abstract class Company{
 	private String nit;
 	private String address;
 	private String phone;
-	private int assets;
+	private String assets;
 	private Date dateOfConstitution;
-	private int amountOfEmployees;
+	private String amountOfEmployees;
 	private String legalRepresentative;
 	private int floors;
 	private Cubicle[][] building;
 
 //Constructor
-/**
-*<b>Description:</b> The constructor of the class Company.<br>
-*<b>Post:</b> All attributes of the class are initialized.<br>
-*@param name The name of the company.
-*@param nit A String that identifies the company.
-*@param address The company's correspondence address.
-*@param phone The contact phone number of the company.
-*@param assets the value of the company's assets in pesos.
-*@param dateOfConstitution The date of constitution of the company.
-*@param amountOfEmployees The number of the company's employees.
-*@param legalRepresentative The name of the company's representative legal.
-*@param floors The number of floors of the company's building.
-*/
+	/**
+	*<b>Description:</b> The constructor of the class Company.<br>
+	*<b>Pre:</b> No one parameter can be null.<br>
+	*<b>Post:</b> All attributes of the class are initialized.<br>
+	*@param name The name of the company.
+	*@param nit A String that identifies the company.
+	*@param address The company's correspondence address.
+	*@param phone The contact phone number of the company.
+	*@param assets the value of the company's assets in pesos.
+	*@param dateOfConstitution The date of constitution of the company.
+	*@param amountOfEmployees The number of the company's employees.
+	*@param legalRepresentative The name of the company's representative legal.
+	*@param floors The number of floors of the company's building.
+	*/
 
-	public Company(String name, String nit, String address, String phone, int assets, Date dateOfConstitution, int amountOfEmployees, String legalRepresentative, int floors){
+	public Company(String name, String nit, String address, String phone, String assets, Date dateOfConstitution, String amountOfEmployees, String legalRepresentative, int floors){
 
 		this.name = name;
 		this.nit = nit;
