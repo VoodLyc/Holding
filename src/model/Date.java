@@ -97,12 +97,10 @@ public class Date{
 
 	/**
 	*<b>Description</b> : Show the date in a date format(d/m/y).<br>
-	*@param day A number that represents the day.
-    *@param month A number that represents the month.
-	*@param year A number that represents the year.
+	*@return The date in format(d/m/y).
 	*/
 
-	public String dateFormat(int day, int month, int year){
+	public String toString(){
 
 		String date = "";
 

@@ -52,4 +52,41 @@ public class TechnologyCompany extends SubordinateCompany{
 		services[4] = service5;
 		services[5] = service6;
 	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.</br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = super.toString();
+		toString += "\nThe energy consumed by the company: " + energyConsumed;
+		toString += "\nServices: " + showServices(services);
+
+		return toString;
+	}
+
+	/**
+	*<b>Description:</b> This method allows showing the technology company's services.<br>
+	*@param services A technology company's array of services
+	*@return A message with the technology company's services.
+	*/
+
+	public String showServices(int [] services){
+
+		String technologyCompanyServices = "";
+
+		for(int i = 0; i < services.length; i++){
+
+			if(services[i] == 1){
+
+				technologyCompanyServices += SERVICES[i] + ", ";
+			}
+		}
+
+		return technologyCompanyServices;
+	}
 }

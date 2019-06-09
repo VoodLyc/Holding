@@ -77,7 +77,7 @@ public class Holding extends Company{
 	*@param legalRepresentative The name of the company's representative legal.
 	*@param floors The number of floors of the company's building (it must be between 3 and 7).
 	*@param sanitaryRegistration The sanitary registry given by INVIMA.
-	*@param status The status (Valid = true and Not renewed = false).
+	*@param status The status (Valid = <code> true </code> and Not renewed = <code> false </code>).
 	*@param modality The modality of the company.
 	*@param expirationDate The expiration date of the sanitary registration.
 	*@return A message that indicates to the user that the pharmaceutical company was added successfully. 
@@ -207,7 +207,7 @@ public class Holding extends Company{
 
 			if(companies.get(i) != null && companies.get(i).getNit().equals(nit)){
 
-				msg = companies.get(i).addEmployee(name, job, email);
+				msg = "\n" +companies.get(i).addEmployee(name, job, email) + "\n";
 				running = false;
 			}
 		}
@@ -272,5 +272,63 @@ public class Holding extends Company{
 		}
 
 		return msg;
+	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.<br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+		toString = "\nHolding: \n";
+		toString += super.toString();
+		return toString;
+	}
+
+	/**
+	*<b>Description:</b> This method allows showing all data entered by the user.<br>
+	*@return A message with all data entered by the user.
+	*/
+
+	public String showListOfAllData(){
+
+		String data = "";
+
+		for(int i = 0; i < companies.size(); i++){
+
+			if(companies.get(i) != null && companies.get(i) instanceof ManufacturingCompany){
+
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[0] + ")\n" + companies.get(i).toString());
+			}
+
+			else if(companies.get(i) != null && companies.get(i) instanceof FoodCompany){
+
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[1] + ")\n" + companies.get(i).toString());
+			}
+
+			else if(companies.get(i) != null && companies.get(i) instanceof PharmaceuticalCompany){
+
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[2] + ")\n" + companies.get(i).toString());
+			}
+
+			else if(companies.get(i) != null && companies.get(i) instanceof TechnologyCompany){
+
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[3] + ")\n" + companies.get(i).toString());
+			}
+
+			else if(companies.get(i) != null && companies.get(i) instanceof EducationalCompany){
+
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[4] + ")\n" + companies.get(i).toString());
+			}
+
+			else if(companies.get(i) != null && companies.get(i) instanceof PublicServicesCompany){
+
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[5] + ")\n" + companies.get(i).toString());
+			}
+		}
+
+		return data;
 	}
 }

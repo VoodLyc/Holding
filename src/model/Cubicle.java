@@ -29,7 +29,7 @@ public class Cubicle{
 //Gets
 
 	/**
-	*<b>Description: </b> This method returns the employee.<br>
+	*<b>Description: </b> This method allows returning the employee.<br>
 	*@return The employee.
 	*/
 

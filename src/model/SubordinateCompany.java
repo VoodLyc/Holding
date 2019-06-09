@@ -36,4 +36,19 @@ public abstract class SubordinateCompany extends Company{
 		super(name, nit, address, phone, assets, dateOfConstitution, amountOfEmployees, legalRepresentative, floors);
 		this.type = type;
 	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.<br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = super.toString();
+		toString += "\nType: " + type;
+		
+		return toString;
+	}
 }

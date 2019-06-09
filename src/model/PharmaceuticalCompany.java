@@ -34,7 +34,7 @@ public class PharmaceuticalCompany extends ManufacturingCompany{
 	*@param legalRepresentative The name of the company's representative legal.
 	*@param floors The number of floors of the company's building (it must be between 3 and 7).
 	*@param sanitaryRegistration The sanitary registry given by INVIMA.
-	*@param status The status (Valid = true and Not renewed = false).
+	*@param status The status (Valid = <code> true </code> and Not renewed = <code> false </code>).
 	*@param modality The modality of the company.
 	*@param expirationDate The expiration date of the sanitary registration.
 	*/
@@ -46,6 +46,26 @@ public class PharmaceuticalCompany extends ManufacturingCompany{
 		this.status = status;
 		this.modality = modality;
 		this.expirationDate = expirationDate;
+	}
+
+//Methods
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.</br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = super.toString();
+		toString += "\nSanitary registration: " + sanitaryRegistration;
+		toString += "\nSanitary registration status: " + status;
+		toString += "\nModality: " + modality;
+		toString += "\nSanitary registration expiration date: " + expirationDate.toString();
+
+		return toString;
 	}
 
 /**

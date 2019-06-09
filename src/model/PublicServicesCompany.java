@@ -44,4 +44,21 @@ public class PublicServicesCompany extends ServicesCompany{
 		this.amountOfSubscribers = amountOfSubscribers;
 		this.subscribersOfStratum1And2 = subscribersOfStratum1And2;
 	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.</br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = super.toString();
+		toString += "\nService: " + service;
+		toString += "\nAmount of subscribers: " + amountOfSubscribers;
+		toString += "\nSubscribers of low stratum: " + subscribersOfStratum1And2;
+
+		return toString;
+	}
 }

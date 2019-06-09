@@ -103,4 +103,26 @@ public abstract class Company{
 
 		return msg;
 	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.<br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = "\nName: " + name;
+		toString += "\nNit: " + nit;
+		toString += "\nAddress: " + address;
+		toString += "\nPhone: " + phone;
+		toString += "\nAssets value: " + assets;
+		toString += "\nConstitution date: " + dateOfConstitution.toString();
+		toString += "\nAmount of employees; " + amountOfEmployees;
+		toString += "\nLegal representative: " + legalRepresentative;
+		toString += "\nBuilding floors: " + floors;
+		
+		return toString;
+	}
 }

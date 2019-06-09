@@ -87,4 +87,39 @@ public class ServicesCompany extends SubordinateCompany{
 
 		return satisfaction;
 	}
+
+	/**
+	*<b>Description:</b> This method allows for calculating the number of surveys that exist.<br>
+	*@return The number of surveys that exist.
+	*/
+
+	public int calculateSurveysAmount(){
+
+		int surveysAmount = 0;
+
+		for(int i = 0; i < surveys.size(); i++){
+
+			if(surveys.get(i) != null){
+
+				surveysAmount++;
+			}
+		}
+
+		return surveysAmount;
+	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.</br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = super.toString();
+		toString += "\nSurveys amount: "+ calculateSurveysAmount();
+
+		return toString;
+	}
 }

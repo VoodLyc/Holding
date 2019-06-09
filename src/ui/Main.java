@@ -1,5 +1,21 @@
 package ui;
-import model.*;
+import model.Company;
+import model.Cubicle;
+import model.Date;
+import model.EducationalCompany;
+import model.Employee;
+import model.FoodCompany;
+import model.Holding;
+import model.ManufacturingCompany;
+import model.PharmaceuticalCompany;
+import model.ProCultureCalculator;
+import model.Product;
+import model.PublicServicesCompany;
+import model.ServicesCompany;
+import model.SubordinateCompany;
+import model.Survey;
+import model.TechnologyCompany;
+import model.TreeCalculator;
 import java.util.Scanner;
 
 /**
@@ -30,6 +46,7 @@ public class Main{
 
 	/**
 	*<b>Description:</b> This method allows initializing the scanner and the objects necessary to the program's correct operation<br>
+	*<b>Post:</b> The objects are initialized.<br>
 	*/
 
 	public void init(){
@@ -72,19 +89,19 @@ public class Main{
 			System.out.println("\n---------------------------------------------------------------------------------------------------------------\n");
 
 			System.out.println("1. Register a company.");
-			System.out.println("2. Quit");
-			System.out.println("3.");
-			System.out.println("4.");
+			System.out.println("2. Show the listing of all the information entered.");
+			System.out.println("3. Register a Employee.");
+			System.out.println("4. Quit");
 			System.out.println("5.");
 			System.out.println("6.");
 			System.out.println("7.");
 			System.out.println("8.");
-			System.out.println("9.");
+			System.out.println("9.\n");
 
-			int choiceNum;
-			choiceNum = scanner.nextInt();
+			int choice;
+			choice = scanner.nextInt();
 
-			switch(choiceNum){
+			switch(choice){
 
 				case 1:
 
@@ -94,8 +111,20 @@ public class Main{
 
 				case 2:
 
-				running = false;
+				showListOfAllData();
 				
+				break;
+
+				case 3:
+
+				registerEmployeeMenu();
+
+				break;
+
+				case 4:
+
+				running = false;
+
 				break;
 			}
 		}
@@ -114,7 +143,7 @@ public class Main{
 		scanner = new Scanner(System.in);
 		String name, nit, address, phone, assets, type, amountOfEmployees, legalRepresentative;
 		Date dateOfConstitution;
-		int day, month, year, floors, typeSelection, classCompany;
+		int constitutionDay, constitutionMonth, constitutionYear, floors, typeSelection, classCompany;
 
 
 		System.out.println("\nPlease enter the company's name.\n");
@@ -133,17 +162,17 @@ public class Main{
 		assets = "$" + scanner.nextLine();
 
 		System.out.println("\nPlease enter the company's day of constitution (between 1 and 30).\n");
-		day = validateInt(1, 31);
+		constitutionDay = validateInt(1, 31);
 
 		System.out.println("\nPlease enter the company's month of constitution (between 1 and 12).\n");
-		month = validateInt(1, 12);
+		constitutionMonth = validateInt(1, 12);
 
 		System.out.println("\nPlease enter the company's year of constitution (until 2019).\n");
-		year = validateInt(1, 2019);
+		constitutionYear = validateInt(1, 2019);
 
-		dateOfConstitution = new Date(day, month, year);
+		dateOfConstitution = new Date(constitutionDay, constitutionMonth, constitutionYear);
 
-		System.out.println("\nPlease select the company's type:\n");
+		System.out.println("\nPlease select the company's type:");
 		System.out.println(showConstantType() + "\n");
 		typeSelection = scanner.nextInt();
 		type = selectType(typeSelection);
@@ -152,13 +181,13 @@ public class Main{
 		System.out.println("\nPlease enter the company's amount of employees.\n");
 		amountOfEmployees = scanner.nextLine();
 
-		System.out.println("\nPlease enter the company's legal epresentative.\n");
+		System.out.println("\nPlease enter the company's legal representative.\n");
 		legalRepresentative = scanner.nextLine();
 
 		System.out.println("\nPlease enter the company's floors (between 3 and 7).\n");
 		floors = validateInt(3, 7);
 
-		System.out.println("\nPlease select the class of company do you want to create:\n");
+		System.out.println("\nPlease select the class of company do you want to create:");
 		System.out.println(showConstantClassesOfCompanies() + "\n");
 		classCompany = validateInt(1, 6);
 		
@@ -180,16 +209,190 @@ public class Main{
 			String sanitaryRegistration, modality;
 			boolean status;
 			Date expirationDate;
+			int modalitySelection, expirationDay, expirationMonth, expirationYear;
 
 			System.out.println("\nPlease enter the company's sanitary registration.\n");
 			sanitaryRegistration = scanner.nextLine();
 
 			System.out.println("\nPlease enter the sanitary registration status.\n");
+			System.out.println("\n1. Valid\n2. Not renewed\n");
+			status = validateBoolean();
+
+			System.out.println("\nPlease select the company's modality:");
+			System.out.println(showConstantModalites() + "\n");
+			modalitySelection = validateInt(1, 3);
+			modality = selectModalitie(modalitySelection);
+
+			System.out.println("\nPlease enter the sanitary registration expiration day (between 1 and 30).\n");
+			expirationDay = validateInt(1, 30);
+
+			System.out.println("\nPlease enter the sanitary registration expiration month (between 1 and 12).\n");
+			expirationMonth = validateInt(1, 12);
+
+			System.out.println("\nPlease enter the sanitary registration expiration year.\n");
+			expirationYear = validateInt(1, 2050);
+
+			expirationDate = new Date(expirationDay, expirationMonth, expirationYear);
+
+			System.out.println(holding.addPharmaceuticalCompany(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, sanitaryRegistration, status, modality, expirationDate));
+
+			break;
+
+			case 4:
+
+			double energyConsumed;
+			int service1, service2, service3, service4, service5, service6;
+
+			System.out.println("\nPlease enter the company's energy consumption.\n");
+			energyConsumed = scanner.nextDouble();
+
+			System.out.println("\nThe company has this service?: " + TechnologyCompany.SERVICES[0] + "\n");
+			System.out.println("\n0. No.\n1. Yes.\n");
+			service1 = validateInt(0, 1);
+
+			System.out.println("\nThe company has this service?: " + TechnologyCompany.SERVICES[1] + "\n");
+			System.out.println("\n0. No.\n1. Yes.\n");
+			service2 = validateInt(0, 1);
+
+			System.out.println("\nThe company has this service?: " + TechnologyCompany.SERVICES[2] + "\n");
+			System.out.println("\n0. No.\n1. Yes.\n");
+			service3 = validateInt(0, 1);
+
+			System.out.println("\nThe company has this service?: " + TechnologyCompany.SERVICES[3] + "\n");
+			System.out.println("\n0. No.\n1. Yes.\n");
+			service4 = validateInt(0, 1);
+
+			System.out.println("\nThe company has this service?: " + TechnologyCompany.SERVICES[4] + "\n");
+			System.out.println("\n0. No.\n1. Yes.\n");
+			service5 = validateInt(0, 1);
+
+			System.out.println("\nThe company has this service?: " + TechnologyCompany.SERVICES[5] + "\n");
+			System.out.println("\n0. No.\n1. Yes.\n");
+			service6 = validateInt(0, 1);
+
+			System.out.println(holding.addTechnologyCompany(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, energyConsumed, service1, service2, service3, service4, service5, service6));
+
+			break;
+
+			case 5:
+
+			String id, rectorName; 
+			int accreditedYears, nationalPositioningTest11Pro, educationalSector, studentsOfLowStratus, amountOfStudents;
+
+			System.out.println("\nPlease enter the company's id.\n");
+			id = scanner.nextLine();
+
+			System.out.println("\nPlease enter the company's accredited years.\n");
+			accreditedYears = scanner.nextInt();
+
+			System.out.println("\nPlease enter the company's national positioning based on test 11/Pro.\n");
+			nationalPositioningTest11Pro = scanner.nextInt();
+
+			System.out.println("\nPlease enter the company's rector name.\n");
+			rectorName = scanner.nextLine();
+
+			System.out.println("\nPlease enter the company's educational sector.\n");
+			System.out.println("\n0. High school.\n1. University.");
+			educationalSector = validateInt(0, 1);
+
+			System.out.println("\nPlease enter the company's students of low stratus.\n");
+			studentsOfLowStratus = scanner.nextInt();
+
+			System.out.println("\nPlease enter the company's amount of students.\n");
+			amountOfStudents = scanner.nextInt();
+
+			System.out.println(holding.addEducationalCompany(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, id, accreditedYears, nationalPositioningTest11Pro, rectorName, educationalSector, studentsOfLowStratus, amountOfStudents));
+
+			break;
+
+			case 6:
+
+			String service;
+			int amountOfSubscribers, subscribersOfStratum1And2, serviceSelection;
+
+			System.out.println("\nPlease select the company's service:\n");
+			System.out.println(showConstantPublicServices() + "\n");
+			serviceSelection = validateInt(1, 3);
+			service = selectPublicService(serviceSelection);
+
+			System.out.println("\nPlease enter the company's amount of subscribers.\n");
+			amountOfSubscribers = scanner.nextInt();
+
+			System.out.println("\nPlease enter the company's subscribers of stratum 1 and 2.\n");
+			subscribersOfStratum1And2 = scanner.nextInt();
+
+			System.out.print(holding.addPublicServicesCompany(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors, service, amountOfSubscribers, subscribersOfStratum1And2));
+
+			break;
+
+			default:
+
+			System.out.print("\nInvalid number, please try again\n");
+
+			break;
 		}
 	}
 
 	/**
-	<b>Description: </b> This method allows showing the SubordinateCompany's TYPE constant to the user.<br>
+	*<b>Description:</b> This method allows for displaying the list with all data entered by the user.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void showListOfAllData(){
+
+
+		System.out.println(holding.toString());
+
+		System.out.println(holding.showListOfAllData());
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to create a employee.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void registerEmployeeMenu(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		String name, job, email, nit;
+
+		System.out.println("\nPlease enter the employee's name\n");
+		name = scanner.nextLine();
+
+		System.out.println("\nPlease enter the employee's job\n");
+		job = scanner.nextLine();
+		
+		System.out.println("\nPlease enter the employee's email\n");
+		email = scanner.nextLine();
+
+		System.out.println("\nPlease enter the company's nit you wish to add the employee to\n");
+		nit = scanner.nextLine();
+
+		System.out.println(holding.addEmployee(name, job, email, nit));
+	}
+
+	/**
+	<b>Description:</b> This method allows showing the Public service company's PUBLIC_SERICES constant to the user.<br>
+	*@return A message with the PUBLIC_SERVICES constant.
+	*/
+
+	public String showConstantPublicServices(){
+
+		String msg = "";
+		int num = 0;
+
+		for(int i = 0; i < PublicServicesCompany.PUBLIC_SERVICES.length; i++){
+
+			num = i + 1;
+			msg += "\n" + num + "." + PublicServicesCompany.PUBLIC_SERVICES[i];
+		}
+
+		return msg;
+	}
+
+	/**
+	<b>Description:</b> This method allows showing the SubordinateCompany's TYPE constant to the user.<br>
 	*@return A message with the TYPE constant.
 	*/
 
@@ -208,7 +411,7 @@ public class Main{
 	}
 
 	/**
-	<b>Description: </b> This method allows showing the Company's CLASSES_OF_COMPANIES constant to the user.<br>
+	<b>Description:</b> This method allows showing the Company's CLASSES_OF_COMPANIES constant to the user.<br>
 	*@return A message with the CLASSES_OF_COMPANIES constant.
 	*/
 
@@ -227,6 +430,40 @@ public class Main{
 	}
 
 	/**
+	<b>Description:</b> This method allows showing the pharmaceutical company's MODALITIES constant to the user.<br>
+	*@return A message with the MODALITIES constant.
+	*/
+
+	public String showConstantModalites(){
+
+		String msg = "";
+		int num = 0;
+
+		for(int i = 0; i < PharmaceuticalCompany.MODALITIES.length; i++){
+
+			num = i + 1;
+			msg += "\n" + num + "." + PharmaceuticalCompany.MODALITIES[i];
+		}
+
+		return msg;
+	}
+
+	/**
+	*<b>Description:</b> This method allows selecting the modalite using the constant MODALITIES.<br>
+	*@param modalitySelection A number that represent the modality selection.
+	*@return The modality.
+	*/
+
+	public String selectModalitie(int modalitySelection){
+
+		String modality = "";
+
+		modality = PharmaceuticalCompany.MODALITIES[modalitySelection - 1];
+
+		return modality;
+	}
+
+	/**
 	*<b>Description:</b> This method allows selecting the service using the constant TYPE.<br>
 	*@param typeSelection A number that represent the service selection.
 	*@return The service.
@@ -240,6 +477,23 @@ public class Main{
 
 		return type;
 	}
+
+	/**
+	*<b>Description:</b> This method allows selecting the public service using the constant PUBLIC_SERVICES.<br>
+	*@param modalitySelection A number that represent the public service selection.
+	*@return The modality.
+	*/
+
+	public String selectPublicService(int publicServiceSelection){
+
+		Scanner scanner = new Scanner(System.in);
+		String service = "";
+		
+		service = PublicServicesCompany.PUBLIC_SERVICES[publicServiceSelection - 1];
+
+		return service;
+	}
+
 
 	/**
 	*<b>Description:</b> This method allows validating if the number is in the range.<br>
@@ -273,6 +527,43 @@ public class Main{
 		}
 		
 		return num;
+	}
+
+	/**
+	*<b>Description:</b> This method allows establishing truth values ​​based on the number entered by the user.<br>
+	*@return The truth value. 
+	*/
+
+	public boolean validateBoolean(){
+
+		Scanner scanner = new Scanner(System.in);
+		boolean running = true;
+		boolean answer = true;
+		int num;
+
+		while(running){
+
+			num = scanner.nextInt();
+			scanner.nextLine();
+
+			if(num == 1){
+
+				running = false;
+			}
+
+			else if(num == 2){
+				
+				answer = false;
+				running = false;
+			}
+
+			else{
+
+				System.out.print("\nInvalid number, please try again\n");
+			}
+		}
+
+		return answer;
 	}
 
 }

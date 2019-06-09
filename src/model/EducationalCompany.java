@@ -74,4 +74,25 @@ public class EducationalCompany extends ServicesCompany implements ProCultureCal
 
 		return msg;
 	}
+
+	/**
+	*<b>Description:</b> This method allows converting the company's attributes in a String.</br>
+	*@return A String with the company's attributes.
+	*/
+
+	public String toString(){
+
+		String toString;
+
+		toString = super.toString();
+		toString += "\nId: " + id;
+		toString += "\nAccredited years: " + accreditedYears;
+		toString += "\nNational positioning based on test 11/Pro: " + nationalPositioningTest11Pro;
+		toString += "\nRector name: " + rectorName;
+		toString += "\nEducational sector: " + educationalSector;
+		toString += "\nStudents of low stratus: " + studentsOfLowStratus;
+		toString += "\nAmountOfStudents: " + amountOfStudents;
+
+		return toString;
+	}
 }
