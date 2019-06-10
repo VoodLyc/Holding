@@ -91,12 +91,15 @@ public class Main{
 			System.out.println("1. Register a company.");
 			System.out.println("2. Show the listing of all the information entered.");
 			System.out.println("3. Register a Employee.");
-			System.out.println("4. Quit");
-			System.out.println("5.");
-			System.out.println("6.");
-			System.out.println("7.");
-			System.out.println("8.");
-			System.out.println("9.\n");
+			System.out.println("4. Register a Survey.");
+			System.out.println("5. Calculate proculture tax.");
+			System.out.println("6. Calculate the average satisfaction level.");
+			System.out.println("7. Register a product.");
+			System.out.println("8. Calculate the waterXtree service for pharmaceutical companies.");
+			System.out.println("9. Find extension with the employee's name");
+			System.out.println("10.");
+			System.out.println("11.");
+			System.out.println("12. Quit\n");
 
 			int choice;
 			choice = scanner.nextInt();
@@ -122,6 +125,42 @@ public class Main{
 				break;
 
 				case 4:
+
+				registerSurveyMenu();
+
+				break;
+
+				case 5:
+
+				calculateProCultureTaxMenu();
+
+				break;
+
+				case 6:
+
+				calculateTheAverageSatisfactionLevelMenu();
+
+				break;
+
+				case 7:
+
+				registerProductMenu();
+
+				break;
+
+				case 8:
+
+				calculateTheWaterXTreeServiceForPharmaceuticalCompanies();
+
+				break;
+
+				case 9:
+
+				findExtensionWithTheNameOfTheEmployeeMenu();
+
+				break;
+
+				case 12:
 
 				running = false;
 
@@ -327,7 +366,7 @@ public class Main{
 
 			default:
 
-			System.out.print("\nInvalid number, please try again\n");
+			System.out.print("\nInvalid number, please try again.\n");
 
 			break;
 		}
@@ -357,19 +396,176 @@ public class Main{
 
 		String name, job, email, nit;
 
-		System.out.println("\nPlease enter the employee's name\n");
+		System.out.println("\nPlease enter the employee's name.\n");
 		name = scanner.nextLine();
 
-		System.out.println("\nPlease enter the employee's job\n");
+		System.out.println("\nPlease enter the employee's job.\n");
 		job = scanner.nextLine();
 		
-		System.out.println("\nPlease enter the employee's email\n");
+		System.out.println("\nPlease enter the employee's email.\n");
 		email = scanner.nextLine();
 
-		System.out.println("\nPlease enter the company's nit you wish to add the employee to\n");
+		System.out.println("\nPlease enter the company's nit you wish to add the employee to.\n");
 		nit = scanner.nextLine();
 
 		System.out.println(holding.addEmployee(name, job, email, nit));
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to create a survey.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void registerSurveyMenu(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		int answer1, answer2, answer3;
+		String nit;
+
+		System.out.println("\nOn a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with:\n");
+		System.out.println(Survey.QUESTIONS[0]);
+		answer1 = validateInt(1, 5);
+		
+		System.out.println(Survey.QUESTIONS[1]);
+		answer2 = validateInt(1, 5);
+
+		System.out.println(Survey.QUESTIONS[2]);
+		answer3 = validateInt(1, 5);
+
+		System.out.println("\nPlease enter the nit of the company to which you want to add the survey.\n");
+		nit = scanner.nextLine();
+
+		System.out.println(holding.addSurvey(answer1, answer2, answer3, nit));
+
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to calculate the proculture tax.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void calculateProCultureTaxMenu(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		String nit;
+
+		System.out.println("\nPlease enter the nit of the educational company to which you want to calculate proculture tax.\n");
+		nit = scanner.nextLine();
+
+		System.out.println(holding.calculateProCultureTax(nit));
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to calculate the satisfaction level.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void calculateTheAverageSatisfactionLevelMenu(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		String nit;
+
+		System.out.println("\nPlease enter the nit of the service company to which you want to calculate the satisfaction level.\n");
+		nit = scanner.nextLine();
+
+		System.out.println(holding.calculateLevelOfSatisfaction(nit));
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to create a Product.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void registerProductMenu(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		String name, id, nit;
+		double waterRequired;
+		int inventory;
+
+		System.out.println("\nPlease enter the product's name.\n");
+		name = scanner.nextLine();
+
+		System.out.println("\nPlease enter the product's id.\n");
+		id = scanner.nextLine();
+		
+		System.out.println("\nPlease enter the product's water required.\n");
+		waterRequired = scanner.nextDouble();
+
+		System.out.println("\nPlease enter the product's units in inventory.\n");
+		inventory = scanner.nextInt();
+		scanner.nextLine();
+
+		System.out.println("\nPlease enter the nit of the manufacturing company to which you want to add the product.\n");
+		nit = scanner.nextLine();
+
+		System.out.println(holding.addProduct(name, id, waterRequired, inventory, nit));
+
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to calculate the waterXtree service.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void calculateTheWaterXTreeServiceForPharmaceuticalCompanies(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		String nit;
+
+		System.out.println("\nPlease enter the nit of the pharmaceutical company to which you want to calculate the waterXtree service.\n");
+		nit = scanner.nextLine();
+
+		System.out.println(holding.calculateTree(nit));
+	}
+
+	/**
+	*<b>Description:</b> This method allows for displaying the menu to search a employee's extension with employee name.<br>
+	*<b>Post:</b> Shows the menu.<br>
+	*/
+
+	public void findExtensionWithTheNameOfTheEmployeeMenu(){
+
+		Scanner scanner = new Scanner(System.in);
+
+		int typeOfSearch;
+		String name, nit;
+
+		System.out.println("\nPlease enter the company's nit\n");
+		nit = scanner.nextLine();
+
+		System.out.println("\nPlease enter the employee's name\n");
+		name = scanner.nextLine();
+	
+		System.out.println("\nPlease select the type of search:\n");
+		System.out.println(showConstantTypeOfSearchs() + "\n");
+		typeOfSearch = validateInt(1, 5);
+
+		System.out.println(holding.searchExtension(name, typeOfSearch, nit));
+	}
+
+	/**
+	<b>Description:</b> This method allows showing the Company's TYPES_OF_SEARCHS constant to the user.<br>
+	*@return A message with the TYPES_OF_SEARCHS constant.
+	*/
+
+	public String showConstantTypeOfSearchs(){
+
+		String msg = "";
+		int num = 0;
+
+		for(int i = 0; i < Company.TYPES_OF_SEARCHS.length; i++){
+
+			num = i + 1;
+			msg += "\n" + num + "." + Company.TYPES_OF_SEARCHS[i];
+		}
+
+		return msg;
 	}
 
 	/**
@@ -485,8 +681,7 @@ public class Main{
 	*/
 
 	public String selectPublicService(int publicServiceSelection){
-
-		Scanner scanner = new Scanner(System.in);
+		
 		String service = "";
 		
 		service = PublicServicesCompany.PUBLIC_SERVICES[publicServiceSelection - 1];

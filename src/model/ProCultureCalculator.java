@@ -9,6 +9,6 @@ public interface ProCultureCalculator{
 
 //Methods
 
-	public abstract String calculateProCulutureTax();
+	public abstract String calculateProCultureTax();
 	
 }

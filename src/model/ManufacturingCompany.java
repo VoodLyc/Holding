@@ -33,4 +33,30 @@ public class ManufacturingCompany extends SubordinateCompany{
 		super(name, nit, address, phone, assets, dateOfConstitution, type, amountOfEmployees, legalRepresentative, floors);
 		products = new ArrayList<Product>();
 	}
+
+//Gets
+
+	public ArrayList<Product> getProducts(){
+
+		return products;
+	}
+
+	/**
+	*<b>Description:</b> This method allows adding a product to the ArrayList of products.<br>
+	*<b>Pre:</b> No one parameter can be null.<br>
+	*@param name The name of the product.
+	*@param id The id that identifies it
+	*@param waterRequired The amount of water (liters) required for manufacturing.
+	*@param inventory The number of units in the inventory.
+	*@return A message that tells the user if the product has been successfully added or not.
+	*/
+	
+	public String addProduct(String name, String id, double waterRequired, int inventory){
+
+		String msg = "\nThe product was added successfully\n";
+
+		products.add(new Product(name, id, waterRequired, inventory));
+
+		return msg;
+	}
 }

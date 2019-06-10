@@ -11,6 +11,7 @@ public abstract class Company{
 	
 	public static final String[] CLASSES_OF_COMPANIES = {"Manufacturing company", "Food company", "Pharmaceutical company", "Technology company", "Educational company", "Public services company"};
 	public static final int CUBICLES = 20; 
+	public static final String[] TYPES_OF_SEARCHS = {"L","Z","X","O","E"};
 
 //Attributes
 
@@ -124,5 +125,189 @@ public abstract class Company{
 		toString += "\nBuilding floors: " + floors;
 		
 		return toString;
+	}
+
+	public String searchExtension(String name, int typeOfSearch){
+
+		String msg = "The employee could not be found";
+
+		boolean running = true;
+
+		if(typeOfSearch == 1){
+
+			for(int x = 0; x < building.length && running != false; x++){
+				
+				if(building[x][0].getEmployee() != null){
+					if(building[x][0].getEmployee().getName().equals(name)){
+						
+						msg = building[x][0].getExtension();
+						running = false;
+						
+					}
+				}	
+			}
+
+			for(int y = 0; y < building[0].length && running != false; y++){
+				
+				if(building[0][y].getEmployee() != null){
+					if(building[0][y].getEmployee().getName().equals(name)){
+						
+						msg = building[0][y].getExtension();
+						running = false;
+						
+					}
+				}	
+			}
+		}
+
+		else if(typeOfSearch == 2){
+			
+			for(int y = 0; y < building[0].length && running != false; y++){
+				
+				if(building[0][y].getEmployee() != null){
+					if(building[0][y].getEmployee().getName().equals(name)){
+						
+						msg = building[0][y].getExtension();
+						running = false;
+						
+					}
+				}
+
+				if(building[building.length-1][y].getEmployee() != null){
+					if(building[building.length-1][y].getEmployee().getName().equals(name)){
+						
+						msg = building[building.length-1][y].getExtension();
+						running = false;
+						
+					}
+				}
+				
+			}
+
+			for(int x = 0; x < building.length && running != false; x++){
+				
+				if(building[x][x].getEmployee() != null){
+					if(building[x][x].getEmployee().getName().equals(name)){
+						
+						msg = building[x][x].getExtension();
+						running = false;
+						
+					}
+				}	
+			}
+		}
+
+		else if(typeOfSearch == 3){
+			
+			for(int x = 0; x < building.length && running != false; x++){
+				
+				if(building[x][x].getEmployee() != null){
+					if(building[x][x].getEmployee().getName().equals(name)){
+						
+						msg = building[x][x].getExtension();
+						running = false;
+						
+					}
+				}
+
+				if(building[building.length - (x+1)][x].getEmployee() != null){
+					if(building[building.length - (x+1)][x].getEmployee().getName().equals(name)){
+						
+						msg = building[building.length - (x+1)][x].getExtension();
+						running = false;
+						
+					}
+				}
+			}
+		}
+
+		else if (typeOfSearch == 4){
+			
+			for(int x = 0; x < building.length && running != false; x++){
+				
+				if(building[x][0].getEmployee() != null){
+					if(building[x][0].getEmployee().getName().equals(name)){
+						
+						msg = building[x][0].getExtension();
+						running = false;
+						
+					}
+				}
+
+				if(building[x][building[0].length - 1].getEmployee() != null){
+					if(building[x][building[0].length -1].getEmployee().getName().equals(name)){
+						
+						msg = building[x][building[0].length -1].getExtension();
+						running = false;
+						
+					}
+				}
+				
+			}
+
+			for(int y = 0; y < building[0].length && running != false; y++){
+				
+				if(building[0][y].getEmployee() != null){
+					if(building[0][y].getEmployee().getName().equals(name)){
+						
+						msg = building[0][y].getExtension();
+						running = false;
+						
+					}
+				}
+
+				if(building[building.length - 1][y].getEmployee() != null){
+					if(building[building.length - 1][y].getEmployee().getName().equals(name)){
+						
+						msg = building[building.length - 1][y].getExtension();
+						running = false;
+						
+					}
+				}	
+			}	
+		}
+
+		else if(typeOfSearch == 5 && (building.length % 2) != 0){
+			
+			for(int x = 0; x < building.length && running != false; x++){
+				
+				if((x % 2) == 0){
+					
+					for(int y = 0; y < building[0].length && running != false; y++){
+						
+						if(building[x][y].getEmployee() != null){
+							if(building[x][y].getEmployee().getName().equals(name)){
+								
+								msg = building[x][y].getExtension();
+								running = false;
+								
+							}
+						}
+						
+					}
+					
+				}
+				else{
+					
+					for(int y = (building[0].length - 1); (y >= 0) && running != false; y--){
+						
+						if(building[x][y].getEmployee() != null){
+							if(building[x][y].getEmployee().getName().equals(name)){
+								
+								msg = building[x][y].getExtension();
+								running = false;
+								
+							}
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		return msg;
 	}
 }

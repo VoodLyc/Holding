@@ -9,5 +9,5 @@ public interface TreeCalculator{
 
 //Methods
 
-	public abstract String calculateTree();
+	public abstract double calculateTree();
 }

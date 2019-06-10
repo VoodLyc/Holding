@@ -38,6 +38,16 @@ public class Cubicle{
 		return employee;
 	}
 
+	/**
+	*<b>Description: </b> This method allows returning the cubicle's extension.<br>
+	*@return The extension.
+	*/
+
+	public String getExtension(){
+
+		return extension;
+	}
+
 //Methods
 
 	/**

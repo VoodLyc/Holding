@@ -32,4 +32,18 @@ public class Product{
 		this.waterRequired = waterRequired;
 		this.inventory = inventory;
 	}
+
+	/**
+	*<b>Description:</b> This method allows calculating the water consumed per product<br>
+	*@return The water consumed.
+	*/
+
+	public double calculateTree(){
+
+		double water;
+
+		water = waterRequired * inventory;
+
+		return water;
+	}
 }

@@ -5,7 +5,7 @@ package model;
 *@author Johan Giraldo.
 */
 
-public class PharmaceuticalCompany extends ManufacturingCompany{
+public class PharmaceuticalCompany extends ManufacturingCompany implements TreeCalculator{
 
 //Constants
 
@@ -68,10 +68,24 @@ public class PharmaceuticalCompany extends ManufacturingCompany{
 		return toString;
 	}
 
-/**
-	public String calculateTree(){
+	/**
+	*<b>Description:</b> This method allows calculating the water consumed by the company.<br>
+	*@return The water consumed by the company.
+	*/
+	public double calculateTree(){
 
+		String msg;
+		double waterConsumed = 0;
+
+		for(int i = 0; i < super.getProducts().size(); i++){
+
+			if(super.getProducts().get(i) != null){
+
+				waterConsumed += super.getProducts().get(i).calculateTree(); 
+			}
+		}
+
+		return waterConsumed;
 
 	}
-*/
 }

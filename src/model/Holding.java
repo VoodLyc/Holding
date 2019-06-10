@@ -216,6 +216,35 @@ public class Holding extends Company{
 	}
 
 	/**
+	*<b>Description:</b> This method allows adding a survey to the ArrayList of surveys.<br>
+	*<b>Pre:</b> No one parameter can be null.<br>
+	*<b>Post:</b> The survey will be added to the ArrayList of surveys.<br>
+	*@param answer1 A number that represents the answer to question 1(On a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with: the questions are specified in the constant QUESTIONS).
+	*@param answer2 A number that represents the answer to question 2(On a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with: the questions are specified in the constant QUESTIONS).
+	*@param answer3 A number that represents the answer to question 3(On a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with: the questions are specified in the constant QUESTIONS).
+	*@return  A message that tells the user if the survey has been successfully added or not.
+	*/
+
+	public String addSurvey(int answer1, int answer2, int answer3, String nit){
+
+		ServicesCompany company = null;
+		boolean running = true;
+		String msg = "\nThe company could not be found or the company is not a services company, please try with another nit\n";
+
+		for(int i = 0; i < companies.size() && running != false; i++){
+
+			if(companies.get(i) != null && companies.get(i).getNit().equals(nit) && companies.get(i) instanceof ServicesCompany){
+
+				company = (ServicesCompany) companies.get(i);
+				msg = "\n" + company.addSurvey(answer1, answer2, answer3) + "\n";
+				running = false;
+			}
+		}
+
+		return msg;
+	}
+
+	/**
 	*<b>Description:</b> This method allow calculate the company's satisfaction level (Use the nit to found the company).<br>
 	*<b>Pre:</b> The nit cannot be null.<br>
 	*@param nit A String that identifies the company.
@@ -226,7 +255,7 @@ public class Holding extends Company{
 
 		ServicesCompany company = null;
 		boolean running = true;
-		String msg = "\nThe company could not be found, please try with another nit\n";
+		String msg = "\nThe company could not be found or the company is not a services company, please try with another nit\n";
 
 		for(int i = 0; i < companies.size() && running != false; i++){
 
@@ -255,18 +284,18 @@ public class Holding extends Company{
 	*@param nit A String that identifies the company.
 	*/
 
-	public String calculateProCulutureTax(String nit){
+	public String calculateProCultureTax(String nit){
 
 		EducationalCompany company = null;
 		boolean running = true;
-		String msg = "\nThe company could not be found, please try with another nit\n";
+		String msg = "\nThe company could not be found or the company is not a educational company, please try with another nit\n";
 
 		for(int i = 0; i < companies.size() && running != false; i++){
 
 			if(companies.get(i) != null && companies.get(i).getNit().equals(nit) && companies.get(i) instanceof EducationalCompany){
 
 				company = (EducationalCompany) companies.get(i);
-				msg = company.calculateProCulutureTax();
+				msg = company.calculateProCultureTax();
 				running = false;
 			}
 		}
@@ -298,9 +327,9 @@ public class Holding extends Company{
 
 		for(int i = 0; i < companies.size(); i++){
 
-			if(companies.get(i) != null && companies.get(i) instanceof ManufacturingCompany){
+			if(companies.get(i) != null && companies.get(i) instanceof PharmaceuticalCompany){
 
-				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[0] + ")\n" + companies.get(i).toString());
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[2] + ")\n" + companies.get(i).toString());
 			}
 
 			else if(companies.get(i) != null && companies.get(i) instanceof FoodCompany){
@@ -308,9 +337,9 @@ public class Holding extends Company{
 				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[1] + ")\n" + companies.get(i).toString());
 			}
 
-			else if(companies.get(i) != null && companies.get(i) instanceof PharmaceuticalCompany){
+			else if(companies.get(i) != null && companies.get(i) instanceof ManufacturingCompany){
 
-				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[2] + ")\n" + companies.get(i).toString());
+				System.out.println("\n(" + Company.CLASSES_OF_COMPANIES[0] + ")\n" + companies.get(i).toString());
 			}
 
 			else if(companies.get(i) != null && companies.get(i) instanceof TechnologyCompany){
@@ -330,5 +359,100 @@ public class Holding extends Company{
 		}
 
 		return data;
+	}
+
+	/**
+	*<b>Description:</b> This method allows adding a product to the ArrayList of products.<br>
+	*<b>Pre:</b> No one parameter can be null.<br>
+	*@param name The name of the product.
+	*@param id The id that identifies it
+	*@param waterRequired The amount of water (liters) required for manufacturing.
+	*@param inventory The number of units in the inventory.
+	*@param nit A String that identifies the company.
+	*@return A message that tells the user if the product has been successfully added or not.
+	*/
+
+	public String addProduct(String name, String id, double waterRequired, int inventory, String nit){
+
+		ManufacturingCompany company = null;
+		boolean running = true;
+		String msg = "\nThe company could not be found or the company is not a manufacturing company, please try with another nit\n";
+
+		for(int i = 0; i < companies.size() && running != false; i++){
+
+			if(companies.get(i) != null && companies.get(i).getNit().equals(nit) && companies.get(i) instanceof ManufacturingCompany){
+
+				company = (ManufacturingCompany) companies.get(i);
+				msg = company.addProduct(name, id, waterRequired, inventory);
+				running = false;
+			}
+		}
+
+		return msg;
+	}
+
+	/**
+	*<b>Description:</b> This method allows calculating the number of trees that needs to plant the company based on water consumption.<br>
+	*@return The number of trees that needs plants the company. 
+	*/
+
+	public String calculateTree(String nit){
+
+		PharmaceuticalCompany company = null;
+		boolean running = true;
+		String msg = "\nThe company could not be found or the company is not a pharmaceutical company, please try with another nit\n";
+		double waterRequired = 0;
+
+		for(int i = 0; i < companies.size() && running != false; i++){
+
+			if(companies.get(i) != null && companies.get(i).getNit().equals(nit) && companies.get(i) instanceof PharmaceuticalCompany){
+
+				company = (PharmaceuticalCompany) companies.get(i);
+				waterRequired = company.calculateTree();
+			}
+		}
+
+		if(waterRequired <= 0){
+
+			msg = "\nThe company don't need to plant trees.\n";
+		}
+
+		else if(waterRequired >= 1 && waterRequired <= 140){
+
+			msg = "\nThe company needs to plant 6 trees.\n";
+		}
+
+		else if(waterRequired >= 141 && waterRequired <= 800){
+
+			msg = "\nThe company needs to plant 25 trees.\n";
+		}
+
+		else if(waterRequired > 800){
+
+			msg = "\nThe company needs to plants 200 trees.\n";
+		}
+
+		return msg;
+	}
+
+	/**
+	*<b>Description:</b> This method allows search the employee's extension wit the name of the employee<br>
+	*@return The employee's extension or a message that indicates the user that the company could not be found.
+	*/
+
+	public String searchExtension(String name, int typeOfSearch, String nit){
+
+		String msg = "The company could not be found, please try with another nit";
+		boolean running = true;
+
+		for(int i = 0; i < companies.size() && running != false; i++){
+
+			if(companies.get(i) != null && companies.get(i).getNit().equals(nit)){
+
+				msg = companies.get(i).searchExtension(name, typeOfSearch);
+			}
+		}
+
+		return msg;
 	}
 }

@@ -29,4 +29,16 @@ public class Employee{
 		this.job = job;
 		this.email = email;
 	}
+
+//Gets
+
+	/**
+	*<b>Description:</b> This method allows returning the employee's name<br>
+	*@return The employee's name.
+	*/
+
+	public String getName(){
+
+		return name;
+	}
 }

@@ -44,11 +44,12 @@ public class ServicesCompany extends SubordinateCompany{
 	*@param answer1 A number that represents the answer to question 1(On a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with: the questions are specified in the constant QUESTIONS).
 	*@param answer2 A number that represents the answer to question 2(On a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with: the questions are specified in the constant QUESTIONS).
 	*@param answer3 A number that represents the answer to question 3(On a scale of 1 to 5 where 1 is not satisfied and 5 is very satisfied, how satisfied are you with: the questions are specified in the constant QUESTIONS).
+	*@return  A message that tells the user if the survey has been successfully added or not.
 	*/
 
 	public String addSurvey(int answer1, int answer2, int answer3){
 
-		String msg = "The survey was added successfully";
+		String msg = "\nThe survey was added successfully\n";
 		
 		if(surveys.size() < 50){
 
@@ -57,7 +58,7 @@ public class ServicesCompany extends SubordinateCompany{
 
 		else{
 
-			msg = "The survey cannot be added because there are already 50 surveys (The survey limit)";
+			msg = "\nThe survey cannot be added because there are already 50 surveys (The survey limit)\n";
 		}
 
 		return msg;

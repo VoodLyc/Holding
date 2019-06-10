@@ -60,16 +60,16 @@ public class EducationalCompany extends ServicesCompany implements ProCultureCal
 	*@return A message that indicates if the company must pay the tax or not and how much is the percentage of the tax.
 	*/
 
-	public String calculateProCulutureTax(){
+	public String calculateProCultureTax(){
 
-		String msg = "The company is exempt from paying the proculture tax";
+		String msg = "\nThe company is exempt from paying the proculture tax\n";
 		double tax = 0.2;
 
 		tax -= ((double)studentsOfLowStratus / amountOfStudents);
 
 		if(tax > 0){
 
-			msg = "The proculture tax is: " + tax + "%";
+			msg = "\nThe proculture tax is: " + tax + "%\n";
 		} 
 
 		return msg;
